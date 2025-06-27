@@ -5,14 +5,11 @@ const val MINUTES_IN_HOUR = 60
 fun main(){
     val departureHour: Int = 9
     val departureMinutes: Int = 39
-    val minutesOnTheROad: Int = 457
-    val arriveHour: Int
-    val arriveMinutes: Int
-    var tempMinutes: Int
+    val minutesOnTheRoad: Int = 457
 
-    tempMinutes = minutesOnTheROad + departureMinutes + departureHour * MINUTES_IN_HOUR
-    arriveHour = tempMinutes / MINUTES_IN_HOUR
-    arriveMinutes = tempMinutes - arriveHour * MINUTES_IN_HOUR
+    val tempMinutes: Int = minutesOnTheRoad + departureMinutes + departureHour * MINUTES_IN_HOUR
+    val arriveHour: Int = tempMinutes / MINUTES_IN_HOUR
+    val arriveMinutes: Int = tempMinutes - arriveHour * MINUTES_IN_HOUR
 
     println("Время прибытия: ${arriveHour}:${arriveMinutes}")
 }
