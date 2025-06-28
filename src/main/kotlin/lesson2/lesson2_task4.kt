@@ -1,14 +1,14 @@
 package org.example.lesson2
 
-fun main(){
-    val crystalOre: Byte = 7
-    val ironOre: Byte = 11
-    val valueOfBuff: Float = 0.2f
-    val additionalCrystallOre: Byte
-    val additionalIronOre: Byte
+const val HUNDRED = 100
 
-    additionalCrystallOre = (crystalOre * valueOfBuff).toInt().toByte()
-    additionalIronOre = (ironOre * valueOfBuff).toInt().toByte()
+fun main(){
+    val crystalOre = 7
+    val ironOre = 11
+    val valueOfBuff = 20
+    val additionalCrystallOre = (crystalOre * valueOfBuff / HUNDRED)
+    val additionalIronOre = (ironOre * valueOfBuff / HUNDRED)
+
     println("Бонусная кристаллическая руда: ${additionalCrystallOre}")
     println("Бонусная железная руда: ${additionalIronOre}")
 }
