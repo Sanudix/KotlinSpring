@@ -17,8 +17,8 @@ fun main(){
     val goodWeatherConditions: Boolean = readln().toBoolean()
 
     println("Корабль может отправиться в плаванье: " +
-            "${((statusOfDamage == CHECK_STATUS_DAMAGE) and ((numberOfCrews >= LOW_NUMBER_CREWS) 
-                    and (numberOfCrews <= HIGH_NUMBER_CREWS)) and (numberOfBox > CHECK_NUMBER_BOX)) 
-                    or ((statusOfDamage != CHECK_STATUS_DAMAGE) and (numberOfCrews == HIGH_NUMBER_CREWS) 
-                    and (goodWeatherConditions == CHECK_GOOD_WEATHER_CONDITIONS) and (numberOfBox >= CHECK_NUMBER_BOX))}")
+            "${((statusOfDamage == CHECK_STATUS_DAMAGE) && ((numberOfCrews >= LOW_NUMBER_CREWS)
+                    && (numberOfCrews <= HIGH_NUMBER_CREWS)) && (numberOfBox > CHECK_NUMBER_BOX)) 
+                    || ((statusOfDamage != CHECK_STATUS_DAMAGE) && (numberOfCrews == HIGH_NUMBER_CREWS)
+                    && (goodWeatherConditions == CHECK_GOOD_WEATHER_CONDITIONS) && (numberOfBox >= CHECK_NUMBER_BOX))}")
 }
