@@ -12,5 +12,5 @@ fun main(){
     val currentSeason = "зима"
 
     println("Благоприятные ли условия сейчас для роста бобовых?" +
-            " ${(NECESSARY_WEATHER == currentWeather) and (NECESSARY_STATUS_OF_TENT == currentStatusOfTent) and (NECESSARY_AIR_HUMIDITY == airHumidity) and (NECESSARY_SEASON != currentSeason)}")
+            " ${(NECESSARY_WEATHER == currentWeather) && (NECESSARY_STATUS_OF_TENT == currentStatusOfTent) && (NECESSARY_AIR_HUMIDITY == airHumidity) && (NECESSARY_SEASON != currentSeason)}")
 }
