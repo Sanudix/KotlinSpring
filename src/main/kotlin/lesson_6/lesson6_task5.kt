@@ -3,36 +3,28 @@ package org.example.lesson5
 import kotlin.random.Random
 
 fun main(){
-    var firstOperand = Random.nextInt(1, 9)
-    var secondOperand = Random.nextInt(1, 9)
-    var resultOfExercise = firstOperand + secondOperand
+    var firstOperand: Int
+    var secondOperand: Int
+    var resultOfExercise: Int
     var countOfTries = 3
 
     print("Вы находитесь на странице входа в аккаунт.\n" +
-            "Сперва докажите, что вы не робот. Для этого решите простой пример.\n" +
-            "У вас $countOfTries попытки. $firstOperand + $secondOperand = ")
-    var userResultOfExercise = readln().toInt()
-    countOfTries--
+            "Сперва докажите, что вы не робот. Для этого решите простой пример.\n")
 
-    if(userResultOfExercise == resultOfExercise){
-        println("Доступ разрешен.")
-    } else {
-        do {
-            firstOperand = Random.nextInt(1, 9)
-            secondOperand = Random.nextInt(1, 9)
-            resultOfExercise = firstOperand + secondOperand
+    do {
+        firstOperand = Random.nextInt(1, 9)
+        secondOperand = Random.nextInt(1, 9)
+        resultOfExercise = firstOperand + secondOperand
 
-            print("Ошибка. У вас $countOfTries попытки. Решите новый пример: $firstOperand + $secondOperand = ")
-            userResultOfExercise = readln().toInt()
-            countOfTries--
+        print("У вас ${countOfTries--} попытки. $firstOperand + $secondOperand = ")
+        var userResultOfExercise = readln().toInt()
 
-            if (countOfTries == 0) {
-                println("Доступ запрещен.")
-                break
-            } else if(userResultOfExercise == resultOfExercise){
-                println("Доступ разрешен.")
-            }
+        if (userResultOfExercise == resultOfExercise) {
+            println("Доступ разрешен.")
+            return
+        } else if(countOfTries == 0){
+            println("Доступ запрещен.")
+            break
         }
-        while(userResultOfExercise != resultOfExercise)
-    }
+    } while(userResultOfExercise != resultOfExercise)
 }
