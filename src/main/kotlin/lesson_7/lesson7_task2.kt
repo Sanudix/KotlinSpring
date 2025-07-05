@@ -9,7 +9,6 @@ fun main() {
         println("Ваш код авторизации: ${codeOfAuthorization}.")
         print("Введите код для входа: ")
         val enterCode = readln().toInt()
-        readln()
     } while (codeOfAuthorization != enterCode)
     println("Вход произведен!")
 }
