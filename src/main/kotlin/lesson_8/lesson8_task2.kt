@@ -5,7 +5,6 @@ fun main() {
         arrayOf("курица", "молоко", "яйца", "сыр", "масло", "соль", "черный перец", "панировочные сухари")
     print("Введите название интересующего ингредиента: ")
     val nameOfIngredient = readln()
-    var flag: Boolean = false
 
     for (i in recipeOfChicken) {
         if (nameOfIngredient == i) {
