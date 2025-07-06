@@ -1,25 +1,25 @@
 package org.example.lesson_8
 
 fun main() {
-    var numberOfIngredient: Int
-    var newIngredient: String
     var counter = 1
-    val recipeOfChicken = arrayOf("курица", "молоко", "яйца", "сыр", "масло", "соль", "черный перец", "панировочные сухари")
-    for (i in recipeOfChicken) {
-        println("Ингредиент номер ${counter++}: $i")
+    val recipeOfChicken =
+        arrayOf("курица", "молоко", "яйца", "сыр", "масло", "соль", "черный перец", "панировочные сухари")
+    recipeOfChicken.forEachIndexed { index, ingredient ->
+        println("${index + 1}. $ingredient")
     }
 
-    do {
-        print("\nВведите номер ингредиента, который нужно заменить: ")
-        numberOfIngredient = readln().toInt() - 1
+    print("\nВведите номер ингредиента, который нужно заменить: ")
+    var numberOfIngredient = readln().toInt() - 1
+    if (numberOfIngredient >= 1 && numberOfIngredient <= recipeOfChicken.size) {
         print("Введите название нового ингредиента: ")
-        newIngredient = readln()
+        var newIngredient = readln()
         recipeOfChicken[numberOfIngredient] = newIngredient
-    } while (numberOfIngredient < 1 || numberOfIngredient > recipeOfChicken.size)
 
-    println("\nГотово! Вы сохранили следующий список:")
-    counter = 1
-    for (i in recipeOfChicken) {
-        println("Ингредиент номер ${counter++}: $i")
+        println("\nГотово! Вы сохранили следующий список:")
+        recipeOfChicken.forEachIndexed { index, ingredient ->
+            println("${index + 1}. $ingredient")
+        }
+    } else {
+        println("Такого ингредиента нет.")
     }
 }
