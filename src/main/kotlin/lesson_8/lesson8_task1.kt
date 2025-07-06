@@ -5,7 +5,7 @@ fun main() {
     var sumOfViews: Int = 0
     println("Введите количество просмотров рекламы за неделю.")
 
-    for (i in 0..6) {
+    for (i in 0 until arrayAdViews.size) {
         print("Просмотры в ${i + 1} день: ")
         arrayAdViews[i] = readln().toInt()
         sumOfViews += arrayAdViews[i]
