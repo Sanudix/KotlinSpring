@@ -1,7 +1,6 @@
 package org.example.lesson_8
 
 fun main() {
-    var counter = 1
     val recipeOfChicken =
         arrayOf("курица", "молоко", "яйца", "сыр", "масло", "соль", "черный перец", "панировочные сухари")
     recipeOfChicken.forEachIndexed { index, ingredient ->
@@ -9,10 +8,10 @@ fun main() {
     }
 
     print("\nВведите номер ингредиента, который нужно заменить: ")
-    var numberOfIngredient = readln().toInt() - 1
-    if (numberOfIngredient >= 1 && numberOfIngredient <= recipeOfChicken.size) {
+    val numberOfIngredient = readln().toInt() - 1
+    if (numberOfIngredient >= 0 && numberOfIngredient < recipeOfChicken.size) {
         print("Введите название нового ингредиента: ")
-        var newIngredient = readln()
+        val newIngredient = readln()
         recipeOfChicken[numberOfIngredient] = newIngredient
 
         println("\nГотово! Вы сохранили следующий список:")
