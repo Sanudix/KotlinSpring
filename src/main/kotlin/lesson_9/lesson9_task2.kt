@@ -22,5 +22,5 @@ fun main() {
     }
 
     println("\nТеперь в рецепте есть следующие ингредиенты:")
-    println(listOfIngredients.joinToString(", ") + ".")
+    println(listOfIngredients.joinToString(", ", postfix = ".\n"))
 }
