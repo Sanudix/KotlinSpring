@@ -1,26 +1,17 @@
 package org.example.lesson_9
 
 fun main() {
-    val listOfIngredient = mutableListOf<String>()
+    val setOfIngredient = mutableSetOf<String>()
 
     println("Введите 5 ингредиентов ниже.")
-    while (listOfIngredient.size < 5) {
+    while (setOfIngredient.size < 5) {
         val userInput = readln()
-        if (userInput !in listOfIngredient) {
-            listOfIngredient.add(userInput)
-        } else {
+        if (!setOfIngredient.add(userInput)) {
             println("Этот ингредиент уже добавлен!")
         }
     }
-    listOfIngredient.sortBy { it.lowercase() }
+    val sortSetOfIngredient =  setOfIngredient.sortedBy { it.lowercase() }
 
-    val formattedOutput = buildString {
-        listOfIngredient.forEachIndexed { index, ingredient ->
-            when (index) {
-                0 -> append(ingredient.lowercase().replaceFirstChar { it.uppercase() })
-                else -> append(", ${ingredient.lowercase()}")
-            }
-        }
-    }
+    val formattedOutput = sortSetOfIngredient.joinToString(", ").replaceFirstChar { it.uppercase() }
     println("Список ингредиентов: $formattedOutput")
 }
