@@ -11,7 +11,7 @@ fun main() {
     print("Введите пароль: ")
     val userPassword = readLine()
 
-    val accessToken = authorization(login = userLogin, password = userPassword)
+    val accessToken = generateToken(login = userLogin, password = userPassword)
     if (accessToken == null)
         println("Неудачная авторизация.")
     else {
@@ -20,7 +20,7 @@ fun main() {
     }
 }
 
-fun authorization(login: String?, password: String?): String? {
+fun generateToken(login: String?, password: String?): String? {
     if (LOGIN == login && PASSWORD == password) {
         val numberRange = 0..9
         val charRange = 'a'..'z'
