@@ -5,10 +5,10 @@ import kotlin.random.Random
 fun main() {
     print("Введите длину пароля: ")
     val passwordLength = readln().toInt()
-    println("Ваш пароль: \"${generationPassword(passwordSize = passwordLength)}\"")
+    println("Ваш пароль: \"${generatePassword(passwordSize = passwordLength)}\"")
 }
 
-fun generationPassword(passwordSize: Int): String {
+fun generatePassword(passwordSize: Int): String {
     var createPassword: String = ""
     val rangeOfChar = ' '..'/'
     for (i in 0 until passwordSize) {
