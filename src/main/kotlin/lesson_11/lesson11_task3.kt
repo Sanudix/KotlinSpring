@@ -1,26 +1,28 @@
 package org.example.lesson_11
 
-class Room (
+class Room(
     val cover: String,
     val title: String,
-    var usersName: MutableList<String>,
-    var usersStatus: MutableList<String>,
-)
-{
-    fun addUser(userInfo: User){
-        usersName += userInfo.name
-        usersStatus +=userInfo.status
+    var usersList: MutableList<User>,
+) {
+    fun addUser(userInfo: User) {
+        usersList.add(userInfo)
     }
 
     fun updateStatus(name: String, newStatus: String) {
-        val index = usersName.indexOf(name)
-        usersStatus[index] = newStatus
+        val user = usersList.find { it.name == name }
+        if (user != null) {
+            user.status = newStatus
+            println("У пользователя $name новый статус: $newStatus")
+        } else {
+            println("Пользователь $name не найден в комнате!")
+        }
     }
 }
 
 class User(
     val name: String,
-    val status: String,
+    var status: String,
 ) {}
 
 fun main() {
@@ -42,13 +44,13 @@ fun main() {
     val carRoom: Room = Room(
         cover = "pictureOfCar",
         title = "Car Club",
-        usersName = mutableListOf(),
-        usersStatus = mutableListOf(),
+        usersList = mutableListOf(),
     )
 
-     carRoom.addUser(user1)
-     carRoom.addUser(user2)
-     carRoom.addUser(user3)
+    carRoom.addUser(user1)
+    carRoom.addUser(user2)
+    carRoom.addUser(user3)
 
     carRoom.updateStatus("Давид", "разговаривает")
+    carRoom.updateStatus("Рома", "разговаривает")
 }
