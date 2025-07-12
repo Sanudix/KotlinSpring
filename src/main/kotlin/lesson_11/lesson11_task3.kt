@@ -1,12 +1,19 @@
 package org.example.lesson_11
+import java.util.UUID
 
 class Room(
     val cover: String,
     val title: String,
     var usersList: MutableList<User>,
 ) {
-    fun addUser(userInfo: User) {
+    fun addUser(userInfo: User): User {
+        if (usersList.any { it.name == userInfo.name }) {
+            throw IllegalArgumentException("Пользователь с именем '$userInfo.name' уже существует")
+        }
+
+        userInfo.id = UUID.randomUUID().toString()
         usersList.add(userInfo)
+        return userInfo
     }
 
     fun updateStatus(name: String, newStatus: String) {
@@ -23,6 +30,7 @@ class Room(
 class User(
     val name: String,
     var status: String,
+    var id: String = ""
 ) {}
 
 fun main() {
