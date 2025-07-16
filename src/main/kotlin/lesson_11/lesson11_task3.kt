@@ -1,4 +1,5 @@
 package org.example.lesson_11
+
 import java.util.UUID
 
 class Room(
@@ -13,6 +14,7 @@ class Room(
 
         userInfo.id = UUID.randomUUID().toString()
         usersList.add(userInfo)
+        println("Добавлен новый пользователь ${userInfo.name} с id: ${userInfo.id}")
         return userInfo
     }
 
@@ -55,9 +57,9 @@ fun main() {
         usersList = mutableListOf(),
     )
 
-    carRoom.addUser(user1)
-    carRoom.addUser(user2)
-    carRoom.addUser(user3)
+    val newUser1 = carRoom.addUser(user1)
+    val newUser2 = carRoom.addUser(user2)
+    val newUser3 = carRoom.addUser(user3)
 
     carRoom.updateStatus("Давид", "разговаривает")
     carRoom.updateStatus("Рома", "разговаривает")
