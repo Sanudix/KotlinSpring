@@ -2,33 +2,17 @@ package org.example.lesson_11
 
 import java.util.UUID
 
-class Member private constructor(
+class Member(
     val userId: String,
     val userName: String
 ) {
-    class Builder {
-        private var userId: String = UUID.randomUUID().toString()
-        private lateinit var userName: String
-
-        fun setUserName(userName: String) = apply { this.userName = userName }
-        fun build() = Member(userId, userName)
-    }
 }
 
-class ForumMessage private constructor(
+class ForumMessage(
     val messageId: String,
     val authorId: String,
     val message: String
 ) {
-    class Builder {
-        private var messageId: String = UUID.randomUUID().toString()
-        private lateinit var authorId: String
-        private lateinit var message: String
-
-        fun setAuthorId(authorId: String) = apply { this.authorId = authorId }
-        fun setMessage(message: String) = apply { this.message = message }
-        fun build() = ForumMessage(messageId, authorId, message)
-    }
 }
 
 class Forum {
@@ -36,19 +20,21 @@ class Forum {
     private val messages = mutableListOf<ForumMessage>()
 
     fun createNewUser(userName: String): Member {
-        val newMember = Member.Builder()
-            .setUserName(userName)
-            .build()
+        val newMember = Member(
+            userId = UUID.randomUUID().toString(),
+            userName = userName
+        )
         members.add(newMember)
         return newMember
     }
 
     fun createNewMessage(authorId: String, message: String): ForumMessage? {
         if (members.any { it.userId == authorId }) {
-            val newMessage = ForumMessage.Builder()
-                .setAuthorId(authorId)
-                .setMessage(message)
-                .build()
+            val newMessage = ForumMessage(
+                messageId = UUID.randomUUID().toString(),
+                authorId = authorId,
+                message = message
+            )
             messages.add(newMessage)
             return newMessage
         }
