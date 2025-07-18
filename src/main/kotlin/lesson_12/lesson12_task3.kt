@@ -15,6 +15,6 @@ class DayWeather(_dayTemperature: Int, _nightTemperature: Int, _isRain: Boolean)
 }
 
 fun main() {
-    val weather = DayWeather(300, 290, true)
+    val weather = DayWeather(308, 290, true)
     weather.printData()
 }
