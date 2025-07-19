@@ -13,15 +13,12 @@ class TelephoneBook(
 fun main() {
     val book1 = TelephoneBook("Альберт", 9881600124)
     val book2 = TelephoneBook("Горик", 9110974172, "Мегафон")
-    val book3 = TelephoneBook("Армен", 9193471882, "МТС")
-    val book4 = TelephoneBook("Артур", 9110926719)
-    val book5 = TelephoneBook("Роман", 9910978372, null)
+    val book3 = TelephoneBook("Армен", 9193471882)
+    val book4 = TelephoneBook("Артур", 9110926719,"null")
+    val book5 = TelephoneBook("Роман", 9910978372, "МТС")
 
     val contactsList = mutableListOf(book1, book2, book3, book4, book5)
 
-    contactsList.forEach {
-        if (it.company != null) {
-            println(it.company)
-        }
-    }
+    var newContactList = contactsList.mapNotNull { it.company }
+    println(newContactList)
 }
