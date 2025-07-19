@@ -3,7 +3,7 @@ package org.example.lesson_13
 class Contact(
     val name: String,
     val phoneNumber: Long,
-    val company: String? = null
+    val company: String? = null,
 ) {
     fun printContact() {
         println("Контакт: $name, Телефон: $phoneNumber, Компания: ${company ?: "<не указано>"}")
