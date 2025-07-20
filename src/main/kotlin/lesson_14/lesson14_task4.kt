@@ -40,8 +40,7 @@ class Satellite(
 fun main() {
     val satellite1 = Satellite("Фобос", 11, 1070000000, false, false, -40)
     val satellite2 = Satellite("Деймос", 12, 148000000, false, false, -40)
-    val satellites = mutableListOf(satellite1, satellite2)
-    val planet = Planet("Марс", 3390, 64200000000000000, true, true, satellites)
+    val planet = Planet("Марс", 3390, 64200000000000000, true, true, mutableListOf(satellite1, satellite2))
 
     planet.printName()
     planet.listOfSatellites.forEach { it.printName() }
