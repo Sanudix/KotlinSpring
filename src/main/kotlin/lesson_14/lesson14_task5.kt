@@ -1,7 +1,7 @@
 open class Message(
-    open val id: Int,
-    open val text: String,
-    open val author: String
+    val id: Int,
+    val text: String,
+    val author: String
 )
 
 class ChildMessage(
@@ -9,7 +9,8 @@ class ChildMessage(
     text: String,
     author: String,
     val parentMessageId: Int
-) : Message(id, text, author)
+) : Message(id, text, author) {
+}
 
 class Chat {
     private val messages = mutableListOf<Message>()
@@ -45,6 +46,7 @@ class Chat {
         }
     }
 }
+
 
 fun main() {
     val chat = Chat()
