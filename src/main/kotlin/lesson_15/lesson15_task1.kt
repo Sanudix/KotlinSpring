@@ -1,47 +1,69 @@
 package org.example.lesson_15
 
 interface FloatingCreatures {
-    fun swimUnderWater()
-    fun swimOnWater()
+    fun swimUnderWater() {
+        println("Умеет плавать под водой.")
+    }
+
+    fun swimOnWater() {
+        println("Умеет плавать на воде.")
+    }
 }
 
 interface FlyingCreatures {
-    fun wavingFlight()
-    fun soaringFlight()
-    fun swoops()
+    fun wavingFlight() {
+        println("Умеет летать, используя машущий полет.")
+    }
+
+    fun soaringFlight() {
+        println("Умеет летать, используя парящий полет.")
+    }
+
+    fun swoops() {
+        println("Умеет пикировать.")
+    }
 }
 
 
 class Crucian : FloatingCreatures {
     override fun swimUnderWater() {
-        println("Карась плавает только под водой.")
-    }
-
-    override fun swimOnWater() {
-        println("По поверхности воды передвигаться не может.")
+        println("\nКарась умеет плавать под водой.")
     }
 }
 
-open class Seagull : FlyingCreatures {
+open class Seagull : FlyingCreatures, FloatingCreatures {
     override fun wavingFlight() {
-        println(
-            "Чайка способна передвигаться с помощью взмахов крыльев." +
-                    " Особенность чайки - способность в машущем полета застывать на одной точке."
-        )
+        print("\nЧайка умеет: летать, используя машущий полет, ")
     }
 
     override fun soaringFlight() {
-        println("Чайка может парить на сильных потоках воздуха рядом с морем.")
+        print("парящий полет, ")
     }
 
     override fun swoops() {
-        println("При охоте чайка может пикировать.")
+        print("может пикировать, ")
+    }
+
+    override fun swimOnWater() {
+        print("способна плавать на воде, ")
+    }
+
+    override fun swimUnderWater() {
+        print("способна нырнуть под воду.")
     }
 }
 
 class Duck : Seagull() {
     override fun wavingFlight() {
-        println("Утка передвигается только с помощью взмахов крыльев.")
+        print("\nУтка умеет: летать, используя машущий полет, ")
+    }
+
+    override fun swimOnWater() {
+        print("плавать на воде, ")
+    }
+
+    override fun swimUnderWater() {
+        print("длительно плавать под подой.")
     }
 }
 
@@ -50,10 +72,15 @@ fun main() {
     val seagull = Seagull()
     val crucian = Crucian()
 
-    duck.wavingFlight()
     seagull.wavingFlight()
     seagull.soaringFlight()
     seagull.swoops()
+    seagull.swimOnWater()
+    seagull.swimUnderWater()
+
+    duck.wavingFlight()
+    duck.swimOnWater()
+    duck.swimUnderWater()
+
     crucian.swimUnderWater()
-    crucian.swimOnWater()
 }
