@@ -34,18 +34,18 @@ interface PassengerTransportation {
     fun passengersLoading(car: PassengerCar) {
         if (car.isTruck) {
             if (car.passengerNumber == MAX_PASSENGERS_COUNT_IN_TRUCK)
-                println("${car.passengerNumber} пассажир сел в машину. Мест больше нет.")
+                println("${car.passengerNumber} пассажир сел в машину \"${car.carBrand}\". Мест больше нет.")
             else if (car.passengerNumber < MAX_PASSENGERS_COUNT_IN_TRUCK)
                 println("Пассажиров нет.")
             else
-                println("Пассажиров слишком много. $MAX_PASSENGERS_COUNT_IN_TRUCK поехал в машине, ${car.passengerNumber - MAX_PASSENGERS_COUNT_IN_TRUCK} остались ждать, когда их заберут.")
+                println("Пассажиров слишком много. $MAX_PASSENGERS_COUNT_IN_TRUCK поехал в машине \"${car.carBrand}\", ${car.passengerNumber - MAX_PASSENGERS_COUNT_IN_TRUCK} остались ждать, когда их заберут.")
         } else {
             if (car.passengerNumber <= MAX_PASSENGERS_IN_PASSENGERS_CAR && car.passengerNumber > NUMBER_OF_PASSENGERS_IN_EMPTY_CAR) {
-                println("${car.passengerNumber} пассажира(пассажир) сели(сел) в машину.")
+                println("${car.passengerNumber} пассажира(пассажир) сели(сел) в машину \"${car.carBrand}\".")
             } else if (car.passengerNumber < NUMBER_OF_PASSENGERS_IN_EMPTY_CAR) {
                 println("Пассажиров нет.")
             } else {
-                println("Пассажиров слишком много. $MAX_PASSENGERS_IN_PASSENGERS_CAR поехал в машине, ${car.passengerNumber - MAX_PASSENGERS_IN_PASSENGERS_CAR} остались ждать, когда их заберут.")
+                println("Пассажиров слишком много. $MAX_PASSENGERS_IN_PASSENGERS_CAR поехал в машине \"${car.carBrand}\", ${car.passengerNumber - MAX_PASSENGERS_IN_PASSENGERS_CAR} остались ждать, когда их заберут.")
             }
         }
     }
@@ -59,7 +59,7 @@ interface PassengerTransportation {
                 println("Пассажиров не было.")
                 return NUMBER_OF_PASSENGERS_IN_EMPTY_CAR
             } else {
-                println("Пассажиров слишком много. Только $MAX_PASSENGERS_COUNT_IN_TRUCK приехал на машине.")
+                println("Пассажиров слишком много. Только $MAX_PASSENGERS_COUNT_IN_TRUCK приехал на машине \"${car.carBrand}\".")
                 return MAX_PASSENGERS_COUNT_IN_TRUCK
             }
         } else {
@@ -84,7 +84,7 @@ interface CargoTransportation {
         else if (truck.cargoWeight <= CARGO_WEIGHT_IN_EMPTY_CAR)
             println("Груза нет.")
         else
-            println("Груза слишком много. $MAX_CARGO_WEIGHT погружен в машину, ${truck.cargoWeight - MAX_CARGO_WEIGHT} тонны(тонна) остались на складе.")
+            println("Груза слишком много. $MAX_CARGO_WEIGHT тонны(тонна) погружено(погружена) в машину \"${truck.carBrand}\", ${truck.cargoWeight - MAX_CARGO_WEIGHT} тонна(тонны) осталась(остались) на складе.")
     }
 
     fun cargoUnloading(truck: Truck): Int {
@@ -104,7 +104,10 @@ interface CargoTransportation {
 fun main() {
     val car1 = PassengerCar(false, 3, "Toyota")
     val car2 = PassengerCar(false, 2, "Ford")
-    val truck1 = Truck(false, 2, "Nissan", 3)
+    val truck1 = Truck(true, 3, "Nissan", 3)
+
+    var passengerNumber = 0
+    var cargoWeight = 0
 
     car1.passengersLoading(car1)
     car2.passengersLoading(car2)
@@ -119,8 +122,10 @@ fun main() {
     car2.endMovement(car2.carBrand)
     truck1.endMovement(truck1.carBrand)
 
-    car1.passengersUnloading(car1)
-    car2.passengersUnloading(car2)
-    truck1.passengersUnloading(truck1)
-    truck1.cargoUnloading(truck1)
+    passengerNumber += car1.passengersUnloading(car1)
+    passengerNumber += car2.passengersUnloading(car2)
+    passengerNumber += truck1.passengersUnloading(truck1)
+    cargoWeight += truck1.cargoUnloading(truck1)
+
+    println("\nИтого было перевезено: $passengerNumber пассажиров, $cargoWeight тонны груза.")
 }
