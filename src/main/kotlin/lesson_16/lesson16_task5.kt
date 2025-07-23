@@ -10,22 +10,26 @@ class Gamer(
     private var healAbility: Boolean = true,
 ) {
     fun healing(): String {
-        health += VALUE_OF_HEALING_POTION
-        if (health > 100) {
-            health = 100
-            return "Вы использовали зелье лечения. Ваше текущее здоровье: $health/$MAX_HEALTH."
-        } else {
+        if (!healAbility) return "Лечение невозможно, персонаж мертв."
+        else {
+            health += VALUE_OF_HEALING_POTION
+            if (health > MAX_HEALTH) {
+                health = MAX_HEALTH
+            }
             return "Вы использовали зелье лечения. Ваше текущее здоровье: $health/$MAX_HEALTH."
         }
     }
 
-    fun injury(damage: Int): String {
-        health -= damage
-        if (health > 0) {
-            return "Вы получили $damage урона. Ваше текущее здоровье: $health/$MAX_HEALTH."
-        } else {
-            deathScript()
-            return "Вы погибли."
+    fun receiveDamage(damage: Int): String {
+        if (!healAbility) return "Получение урона невозможно, персонаж мертв."
+        else {
+            health -= damage
+            if (health > 0) {
+                return "Вы получили $damage урона. Ваше текущее здоровье: $health/$MAX_HEALTH."
+            } else {
+                deathScript()
+                return "Вы погибли."
+            }
         }
     }
 
@@ -44,19 +48,19 @@ fun main() {
         |Однако специально на такой случай у вас куплен меч и зелья лечения.
         |Бой начинается!!!
         |
-        |Грифон слегка вас задел. ${gamer1.injury(10)} Вы решаете продолжить бой.
-        |Грифон вас сильно ранил ударом клюва. ${gamer1.injury(30)} 
+        |Грифон слегка вас задел. ${gamer1.receiveDamage(10)} Вы решаете продолжить бой.
+        |Грифон вас сильно ранил ударом клюва. ${gamer1.receiveDamage(30)} 
         |Вы решаете подлечиться. ${gamer1.healing()}
         |В ожесточенном сражении вы обмениваетесь ударами с грифоном. 
-        |${gamer1.injury(40)} 
-        |${gamer1.injury(40)}
+        |${gamer1.receiveDamage(40)} 
+        |${gamer1.receiveDamage(40)}
         |Грифон злится из-за ранений, хватает вас и взлетает.
         |Вы стараетесь полностью восстановиться и выпиваете все зелья лечения. 
         |${gamer1.healing()}
         |${gamer1.healing()}
         |${gamer1.healing()}
         |${gamer1.healing()}
-        |Грифон сбрасывает вас с большой высоты. ${gamer1.injury(999)}
+        |Грифон сбрасывает вас с большой высоты. ${gamer1.receiveDamage(999)}
     """.trimMargin()
     )
 }
