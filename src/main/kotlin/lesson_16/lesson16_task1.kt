@@ -1,9 +1,7 @@
 package org.example.lesson_16
 
-import kotlin.random.Random
-
 class PlayingCube() {
-    private val value: Int = Random.nextInt(1, 6)
+    private val value: Int = (1..6).random()
     fun getValue() {
         println("Значение игрального кубика: $value")
     }
