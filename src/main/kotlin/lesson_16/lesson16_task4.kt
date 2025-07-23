@@ -1,8 +1,5 @@
 package org.example.lesson_16
 
-import kotlin.random.Random
-import kotlin.random.nextInt
-
 const val WAITING_TIME = 15
 
 class OnlineOrdering(
@@ -11,6 +8,10 @@ class OnlineOrdering(
 ) {
     fun changeStatus(newStatus: Boolean) {
         readyStatus = newStatus
+    }
+
+    fun updateStatus(newStatus: Boolean) {
+        changeStatus(newStatus)
     }
 }
 
@@ -21,7 +22,7 @@ fun sendRequest(newStatus: Boolean, order: OnlineOrdering) {
     """.trimMargin()
     )
 
-    val randomTime = Random.nextInt(1, 11)
+    val randomTime = (1..10).random()
 
     for (i in WAITING_TIME downTo 1) {
         if (i == randomTime) {
@@ -32,7 +33,7 @@ fun sendRequest(newStatus: Boolean, order: OnlineOrdering) {
         }
     }
     println("Заявка одобрена, статус готовности заказа: $newStatus!")
-    order.changeStatus(newStatus)
+    order.updateStatus(newStatus)
 }
 
 fun main() {
