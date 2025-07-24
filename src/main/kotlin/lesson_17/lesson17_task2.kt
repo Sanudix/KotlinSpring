@@ -1,6 +1,6 @@
 package org.example.lesson_17
 
-class Ship() {
+class Ship(name: String) {
     var name: String = "Линкор"
         get() = field
         set(newName) {
@@ -21,7 +21,7 @@ class Ship() {
 }
 
 fun main() {
-    val ship1 = Ship()
+    val ship1 = Ship("Тральщик")
 
     ship1.avgSpeed = 30
     ship1.seaport = "Владивосток"
