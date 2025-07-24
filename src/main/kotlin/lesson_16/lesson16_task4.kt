@@ -6,7 +6,7 @@ class OnlineOrdering(
     private val orderNumber: Int,
     private var readyStatus: Boolean,
 ) {
-    fun changeStatus(newStatus: Boolean) {
+    private fun changeStatus(newStatus: Boolean) {
         readyStatus = newStatus
     }
 
