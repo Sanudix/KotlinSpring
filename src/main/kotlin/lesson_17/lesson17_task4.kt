@@ -9,7 +9,8 @@ class Package(
     var newLocation: String
         get() = currentLocation
         set(value) {
-            println("Посылка прибыла из \"${currentLocation}\" в \"${value}\".\nТекущее кол-во перемещений: ${++counterMoving}.")
+            ++counterMoving
+            println("Посылка прибыла из \"${currentLocation}\" в \"${value}\".\nТекущее кол-во перемещений: ${counterMoving}.")
             currentLocation = value
         }
 }
