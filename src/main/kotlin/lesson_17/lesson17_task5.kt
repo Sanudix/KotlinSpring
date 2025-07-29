@@ -5,10 +5,7 @@ class User(
     private var realLogin: String,
 ) {
     var password: String
-        get() {
-            println("Текущий пароль: \"${printPassword(realPassword.length)}\".")
-            return printPassword(realPassword.length)
-        }
+        get() = "*".repeat(realPassword.length)
         set(value) {
             println("Вы не можете изменить пароль.")
         }
