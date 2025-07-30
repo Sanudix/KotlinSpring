@@ -1,40 +1,29 @@
 package org.example.lesson_17
 
 class User(
-    private val realPassword: String,
-    private var realLogin: String,
+    _password: String,
+    _login: String,
 ) {
-    var password: String
-        get() = "*".repeat(realPassword.length)
+    var password: String = _password
+        get() = "*".repeat(field.length)
         set(value) {
             println("Вы не можете изменить пароль.")
         }
 
-    var login: String
-        get() {
-            println("Текущую логин: \"$realLogin\".")
-            return realLogin
-        }
+    var login: String = _login
+        get() = field
         set(value) {
-            println("Логин изменен с \"${realLogin}\" на \"$value\".")
-            realLogin = value
+            println("Логин изменен с \"${field}\" на \"$value\".")
+            field = value
         }
-}
-
-fun printPassword(count: Int): String {
-    var temp: String = ""
-    for (i in 0 until count) {
-        temp += "*"
-    }
-    return temp
 }
 
 fun main() {
     val user1 = User("123333", "Olya")
 
-    user1.password
+    println("Текущий пароль: \"${user1.password}\".")
     user1.password = "gAf12"
 
-    user1.login
+    println("Текущий логин: \"${user1.login}\".")
     user1.login = "Nastia"
 }
