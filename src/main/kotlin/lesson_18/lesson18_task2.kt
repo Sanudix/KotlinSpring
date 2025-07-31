@@ -1,6 +1,6 @@
 package org.example.lesson_18
 
-open class FourSidedDice() {
+open class FourSidedDice {
     open val numberOfSides = 4
 
     open fun throwCube() {
@@ -9,7 +9,7 @@ open class FourSidedDice() {
     }
 }
 
-class SixSidedDice() : FourSidedDice() {
+class SixSidedDice : FourSidedDice() {
     override val numberOfSides = 6
 
     override fun throwCube() {
@@ -18,7 +18,7 @@ class SixSidedDice() : FourSidedDice() {
     }
 }
 
-class EightSidedDice() : FourSidedDice() {
+class EightSidedDice : FourSidedDice() {
     override val numberOfSides = 8
 
     override fun throwCube() {
