@@ -1,35 +1,37 @@
 package org.example.lesson_18
 
-open class Fox(val name: String) {
-    open fun eatAction() {
-        println("$name -> Лиса съела ягоды.")
+abstract class Pet(val name: String) {
+    abstract val food: String
+
+    fun eatAction() {
+        println("$name -> ест $food.")
     }
 
     fun sleepAction() {
-        println("Питомец уснул.")
+        println("$name спит.")
     }
 }
 
-class Dog(name: String) : Fox(name) {
-    override fun eatAction() {
-        println("$name -> Собака съела кости.")
-    }
+class Fox(name: String) : Pet(name) {
+    override val food = "ягоды"
 }
 
-class Cat(name: String) : Fox(name) {
-    override fun eatAction() {
-        println("$name -> Кошка съела рыбу.")
-    }
+class Dog(name: String) : Pet(name) {
+    override val food = "кости"
+}
+
+class Cat(name: String) : Pet(name) {
+    override val food = "рыбу"
 }
 
 fun main() {
-    val animal1 = Fox("Фокси")
-    val animal2 = Dog("Ворчун")
-    val animal3 = Cat("Лапка")
+    val pet1 = Fox("Фокси")
+    val pet2 = Dog("Ворчун")
+    val pet3 = Cat("Лапка")
 
-    val animalsList = listOf<Fox>(animal1, animal2, animal3)
+    val petsList = listOf<Pet>(pet1, pet2, pet3)
 
-    animalsList.forEach { animal ->
-        animal.eatAction()
+    petsList.forEach { pet ->
+        pet.eatAction()
     }
 }
