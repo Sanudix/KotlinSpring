@@ -32,6 +32,10 @@ class Product(
 
 fun main() {
     val product1 = Product("Синие джинсы", 8362, Categories.CLOTHES)
+    val product2 = Product("Красные ножницы", 8627, Categories.STATIONERY)
+    val product3 = Product("Бутылка воды", 3921, Categories.DIFFERENT)
 
     product1.printInfo()
+    product2.printInfo()
+    product3.printInfo()
 }
