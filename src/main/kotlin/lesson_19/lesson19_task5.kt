@@ -1,23 +1,10 @@
 package org.example.lesson_19
 
-class Human() {
-    private lateinit var name: String
+class Human(private val name: String) {
     private lateinit var gender: Genders
 
-    fun addHuman() {
-        print("\nВведите ФИО: ")
-        name = readln()
-
-        do {
-            print("Введите пол: ")
-            val genderString = readln().uppercase()
-            when (genderString) {
-                Genders.FEMALE.name -> gender = Genders.FEMALE
-                Genders.MALE.name -> gender = Genders.MALE
-                else -> println("Введено некорретное значение.")
-            }
-        } while (genderString != Genders.FEMALE.name && genderString != Genders.MALE.name)
-
+    fun addHuman(_gender: Genders) {
+        gender = _gender
         println("Данные о человеке добавлены.")
     }
 
@@ -28,6 +15,20 @@ class Human() {
 enum class Genders {
     MALE,
     FEMALE,
+}
+
+fun setGender(): Genders {
+    lateinit var inputGender: Genders
+    do {
+        print("Введите пол: ")
+        val genderString = readln().uppercase()
+        when (genderString) {
+            Genders.FEMALE.name -> inputGender = Genders.FEMALE
+            Genders.MALE.name -> inputGender = Genders.MALE
+            else -> println("Введено некорретное значение.")
+        }
+    } while (genderString != Genders.FEMALE.name && genderString != Genders.MALE.name)
+    return inputGender
 }
 
 fun main() {
@@ -43,8 +44,10 @@ fun main() {
     val humanList = mutableListOf<Human>()
 
     while (humanList.size != 5) {
-        val human = Human()
-        human.addHuman()
+        print("\nВведите ФИО: ")
+        val inputName = readln()
+        val human = Human(inputName)
+        human.addHuman(setGender())
         humanList.add(human)
     }
 
