@@ -6,10 +6,9 @@ class Player(
     private val maxHealth: Int,
 ) {
     fun printHealth() {
-        println("Здоровье игрока: $currentHealth/$maxHealth.")
+        println("Здоровье игрока $name: $currentHealth/$maxHealth.")
     }
-
-    fun getMaxHealth() = maxHealth
+    
     fun setCurrentHealth() {
         currentHealth = maxHealth
     }
@@ -22,5 +21,7 @@ fun main() {
         player.setCurrentHealth()
     }
 
+    player1.printHealth()
+    heal.invoke(player1)
     player1.printHealth()
 }
