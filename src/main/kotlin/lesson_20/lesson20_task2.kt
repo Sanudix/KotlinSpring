@@ -9,7 +9,7 @@ class Player(
         println("Здоровье игрока $name: $currentHealth/$maxHealth.")
     }
     
-    fun setCurrentHealth() {
+    fun changeCurrentHealth() {
         currentHealth = maxHealth
     }
 }
@@ -18,7 +18,7 @@ fun main() {
     val player1 = Player("Geralt", 64, 100)
 
     val heal: (Player) -> Unit = { player: Player ->
-        player.setCurrentHealth()
+        player.changeCurrentHealth()
     }
 
     player1.printHealth()
