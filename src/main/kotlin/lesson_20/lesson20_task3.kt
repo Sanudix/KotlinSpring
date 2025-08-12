@@ -1,11 +1,11 @@
 package org.example.lesson_20
 
-class Gamer(val keyAvailable: Boolean = false,){
+class Gamer(val keyAvailable: Boolean) {
     fun getStatus() = keyAvailable
 }
 
 fun main() {
-    val gamer1 = Gamer( false)
+    val gamer1 = Gamer(false)
     val gamer2 = Gamer(true)
 
     val checkKey: (Gamer) -> String = { gamer: Gamer ->
