@@ -1,34 +1,32 @@
 package org.example.lesson_19
 
 class Human(private val name: String) {
-    private lateinit var gender: Genders
+    private var gender: Gender? = null
 
-    fun addHuman(_gender: Genders) {
+    fun setHumanGender(_gender: Gender) {
         gender = _gender
         println("Данные о человеке добавлены.")
     }
 
     fun getName() = name
-    fun getGender() = gender
+    fun getGender() = gender ?: throw IllegalStateException("Пол не установлен.")
 }
 
-enum class Genders {
+enum class Gender {
     MALE,
     FEMALE,
 }
 
-fun setGender(): Genders {
-    lateinit var inputGender: Genders
-    do {
+fun chooseGender(): Gender {
+    while (true) {
         print("Введите пол: ")
         val genderString = readln().uppercase()
         when (genderString) {
-            Genders.FEMALE.name -> inputGender = Genders.FEMALE
-            Genders.MALE.name -> inputGender = Genders.MALE
-            else -> println("Введено некорретное значение.")
+            Gender.FEMALE.name -> return Gender.FEMALE
+            Gender.MALE.name -> return Gender.MALE
+            else -> println("Введено некорректное значение.")
         }
-    } while (genderString != Genders.FEMALE.name && genderString != Genders.MALE.name)
-    return inputGender
+    }
 }
 
 fun main() {
@@ -47,7 +45,7 @@ fun main() {
         print("\nВведите ФИО: ")
         val inputName = readln()
         val human = Human(inputName)
-        human.addHuman(setGender())
+        human.setHumanGender(chooseGender())
         humanList.add(human)
     }
 
