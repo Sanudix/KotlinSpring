@@ -25,9 +25,11 @@ class Player(
 fun main() {
     val player1 = Player("Albert", 100, 100)
     val player2 = Player("Arnold", 80, 100)
+
+    player1.isHealthy()
+    player2.isHealthy()
 }
 
-fun Player.isHealthy(_player: Player): Boolean {
-    if (_player.getMaxHealth() == _player.getCurrentHealth()) return true
-    else return false
+fun Player.isHealthy(): Boolean {
+    return this.getMaxHealth() == this.getCurrentHealth()
 }
