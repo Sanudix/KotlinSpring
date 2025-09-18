@@ -4,18 +4,12 @@ fun main() {
     print("Введите строку для определения количества гласных букв: ")
     val inputString: String = readln()
 
-    println("Количество гласных букв: ${inputString.vowelCount(inputString)}")
+    println("Количество гласных букв: ${inputString.vowelCount()}")
 }
 
-fun String.vowelCount(value: String): Int {
+fun String.vowelCount(): Int {
     val russianVowels = setOf('а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я')
     val englishVowels = setOf('a', 'e', 'i', 'o', 'u')
-    var counter = 0
 
-    for (char in value.lowercase()) {
-        if (char in russianVowels || char in englishVowels) {
-            counter++
-        }
-    }
-    return counter
+    return this.lowercase() .count { it in russianVowels || it in englishVowels }
 }
