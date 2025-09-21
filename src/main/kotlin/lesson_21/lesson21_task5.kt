@@ -12,7 +12,6 @@ fun main() {
     println(playerMap.maxCategory())
 }
 
-fun Map<String, Int>.maxCategory(): String {
-    val newMap = this.maxBy { it.value }
-    return newMap.key
+fun Map<String, Int>.maxCategory(): String? {
+    return this.maxByOrNull { it.value }?.key
 }
