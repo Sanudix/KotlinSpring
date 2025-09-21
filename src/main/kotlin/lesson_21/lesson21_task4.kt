@@ -6,14 +6,14 @@ fun main() {
     val wordsFile = File("newFile.txt")
 
     wordsFile.createNewFile()
-    wordsFile.writeText(" is the capital of Great Britian")
+    wordsFile.writeText("is the capital of Great Britian")
 
-    wordsFile.appendWord("London")
+    wordsFile.addWord("London")
     println(wordsFile.readText())
 }
 
-fun File.appendWord(word: String) {
+fun File.addWord(word: String) {
     val fileContents = if (this.length() > 0) this.readText() else ""
 
-    this.writeText("${word.lowercase()}$fileContents")
+    this.writeText("${word.lowercase()}\n$fileContents")
 }
